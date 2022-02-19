@@ -28,7 +28,9 @@ for row in csv_inputfile:					 		 #iterate over the csv file object by looping o
 	programmingperc = float(row[4]) 		 		 #extracting the programming percentage in position 4 from the specific row and converting it to a float 
 	databasesperc = float(row[5]) 			 		 #extracting the databases percentage in position 5 from the specific row and converting it to a float 
 
-	avrg = float(round(((algebraperc+calculusperc+programmingperc+databasesperc)/4),1)) 
+	total_percentages = algebraperc+calculusperc+programmingperc+databasesperc
+	avrg = float(round(((total_percentages)/4),1))
+
 	#calculating the average percentage per learner by using the total percentage divided by the number of subjects. Rounded off to 1 decimal as required 
 	
 
