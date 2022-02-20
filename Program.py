@@ -7,14 +7,14 @@
 #start
 
 import csv 											 #importing a built in module to enable reading/manipulating/writing of csv files
-import pandas as pd
+import pandas as pd									 #importing panda library
 
-df = pd.read_csv("input.csv")
+df = pd.read_csv("input.csv")						 #reads in all the rows from input csv file (skips header line)
 
-totrows=len(df.axes[0])
-totcol=len(df.axes[1])
+totrows=len(df.axes[0])								 #gets the total number of rows in csv file
+totcol=len(df.axes[1])								 #gets the total number of columns in csv file
 
-num_of_subjects = totcol-2
+num_of_subjects = totcol-2							 #gets the total number of subjects
 
 inputfile = open('input.csv') 						 #tells the csv module to open the given "input.csv" file and assigns this file to an object (inputfile)
 csv_inputfile = csv.reader(inputfile) 				 #pass the inputfile object to the csv module to create a csv file object
