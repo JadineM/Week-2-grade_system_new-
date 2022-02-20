@@ -7,6 +7,14 @@
 #start
 
 import csv 											 #importing a built in module to enable reading/manipulating/writing of csv files
+import pandas as pd
+
+df = pd.read_csv("input.csv")
+
+totrows=len(df.axes[0])
+totcol=len(df.axes[1])
+
+num_of_subjects = totcol-2
 
 inputfile = open('input.csv') 						 #tells the csv module to open the given "input.csv" file and assigns this file to an object (inputfile)
 csv_inputfile = csv.reader(inputfile) 				 #pass the inputfile object to the csv module to create a csv file object
@@ -23,17 +31,15 @@ for row in csv_inputfile:					 		 #iterate over the csv file object by looping o
 	
 	firstname = (row[0]) 					 		 #extracting the firstname in position 0 from the specific row as a string
 	surname = (row[1]) 						 		 #extracting the surname in position 1 from the specific row as a string
-	algebraperc = float(row[2]) 			 		 #extracting the algebra percentage in position 2 from the specific row and converting it to a float 
-	calculusperc = float(row[3]) 			 		 #extracting the calculus percentage in position 3 from the specific row and converting it to a float 
-	programmingperc = float(row[4]) 		 		 #extracting the programming percentage in position 4 from the specific row and converting it to a float 
-	databasesperc = float(row[5]) 			 		 #extracting the databases percentage in position 5 from the specific row and converting it to a float 
+	
+	total_percentage = 0
+	for i in range(2,totcol):
+	
+		total_percentage = float(row[i]) + total_percentage	#calculating each students total percentage over all modules using a nested for loop
 
-	total_percentages = algebraperc+calculusperc+programmingperc+databasesperc
-	avrg = float(round(((total_percentages)/4),1))
-
+	avrg = float(round(((total_percentage)/(num_of_subjects)),1)) 
 	#calculating the average percentage per learner by using the total percentage divided by the number of subjects. Rounded off to 1 decimal as required 
 	
-
 
 	#the following if else function is used to calculate the learners symbol and thereafter write their details, average and symbol to a new csv file "output.csv"
 	if( 80 <= avrg <= 100): 				   
